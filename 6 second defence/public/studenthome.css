@@ -1,0 +1,61 @@
+#counter{
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+}
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    text-align: justify;
+}
+
+nav {
+    margin-top: 5px;
+}
+
+.nav-item {
+    margin: 0px 25px;
+    font-size: 25px;
+}
+
+h1 {
+    margin: 50px;
+}
+
+.container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-content: space-between;
+    gap: 50px;
+}
+
+.gotoHomePage {
+    margin-top: 50px;
+}
+
+.containerBelow {
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pastRec {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 30px;
+}
+
+.card {
+    width: 100%;
+}

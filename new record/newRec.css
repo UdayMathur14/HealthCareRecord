@@ -1,0 +1,78 @@
+.btn {
+    margin: 0px 9px;
+    color: white;
+    background-color: black;
+    /* user agent stylesheet suggest button ke color ko black karo */
+    padding: 4px 14px;
+    border: 2px solid grey;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    /* font change too */
+    font-family: 'Baloo Bhai 2', cursive;
+
+}
+
+.btn:hover {
+    background-color: rgba(128, 128, 128, 0.288);
+    /* colors your choice */
+    /* font size and positioning of sid title and navbar*/
+    /* can do light color acc. */
+}
+
+.container {
+    border: 2px solid white;
+    margin: 106px 80px;
+    padding: 20px;
+    width: 35%;
+    border-radius: 28px;
+    background-color: white;
+    opacity: 0.75;
+    /* height: 348px; */
+}
+
+.container h1 {
+    text-align: center;
+}
+
+.form-group input {
+    /* why specific targetting */
+
+    text-align: center;
+    display: block;
+    width: 400px;
+    padding: 1px;
+    border: 2px solid black;
+    margin: 11px auto;
+    /* why auto */
+    font-size: 25px;
+    border-radius: 8px;
+    font-family: 'Baloo Bhai 2', cursive;
+    /* height: ; */
+    /* font: ;*/
+    /* can change font size too */
+}
+
+.container button {
+    display: block;
+    width: 90%;
+    margin: 20px auto;
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+    background-image: url("bg.jpg");
+}
+*{
+    margin: 0px;
+    padding: 0px;
+    text-align: justify;
+}
+nav{
+    margin-top: 5px;
+}
+.nav-item{
+    margin: 0px 25px;
+    font-size: 25px;
+}

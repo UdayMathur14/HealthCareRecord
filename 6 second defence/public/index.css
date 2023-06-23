@@ -1,0 +1,111 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+* {
+    margin: 0px;
+    padding: 0px;
+    text-align: justify;
+}
+#counter{
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+}
+img {
+    width: 100%;
+    height: 30vh;
+}
+nav {
+    margin-top: 5px;
+}
+.nav-item {
+    margin: 0px 25px;
+    font-size: 25px;
+}
+.outer {
+    margin: 40px 60px;
+    height: 120vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.left {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 60vw;
+    height: 55vh;
+    margin: 25px;
+}
+.right {
+    margin: 30px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+    height: 55vh;
+}
+iframe {
+    margin-bottom: 10px;
+}
+#bb {
+    width: 60%;
+    height: 60%;
+    margin-right: 15px;
+}
+.des {
+    justify-content: space-evenly;
+    display: flex;
+    flex-direction: row;
+    margin-top: 25px;
+}
+.section {
+    height: 400px;
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+.team {
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 60px;
+    margin-left: 100px;
+    margin-right: 100px;
+    height: 100%;
+}
+.usingEHR {
+    margin: 0px 100px;
+    height: 10%;
+}
+.features {
+    margin: 0px 100px;
+}
+footer {
+    margin-top: 100px;
+}
+.getstarted {
+    margin-top: 100px;
+}
+.brdr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 5px groove rgb(205, 246, 244);
+    height: 190px;
+    width: 100%;
+}
+.diff {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.teamcards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 20px;
+}
+.card {
+    display: inline-block;
+}

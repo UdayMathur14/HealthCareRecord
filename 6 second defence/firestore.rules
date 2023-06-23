@@ -1,0 +1,29 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function getUser(uid){
+      return get(/databases/$(database)/documents/doctors/$(uid)).data;
+    }
+
+    function isDoctor(request){
+      return getUser(request.auth.uid).role =='doctor';
+    }
+
+    match /users/{userID}{
+      allow read: if request.auth.uid == userID || isDoctor(request);
+      allow write: if request.auth.uid == userID;
+    }
+
+    match /users/{userID}/records/{recordID}{
+      allow read: if request.auth.uid == userID || isDoctor(request);
+      allow write: if request.auth.uid == userID || isDoctor(request);
+    }
+    
+    match /doctors/{userID}{
+      allow read: if request.auth.uid == userID;
+      allow write: if request.auth.uid == userID;
+    }
+
+  }
+}

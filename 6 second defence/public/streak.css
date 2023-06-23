@@ -1,0 +1,24 @@
+#counter{
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+}
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    text-align: justify;
+}
+
+nav {
+    margin-top: 5px;
+}
+
+.nav-item {
+    margin: 0px 25px;
+    font-size: 25px;
+}

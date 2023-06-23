@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>Your Statistics</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+    }
+
+    /* .chartMenu {
+      width: 100vw;
+      height: 40px; 
+      background: rgb(241, 12, 172);
+      color: rgb(135, 167, 189); 
+    } */
+
+    /* .chartMenu p {
+      padding: 10px;
+      font-size: 20px;
+    } */
+
+    .chartCard {
+      width: 100vw;
+      height: calc(100vh - 20px);
+      background: rgba(54, 162, 235, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .chartBox {
+      width: 65vw;
+      padding: 20px;
+      border-radius: 20px;
+      border: solid 3px rgba(54, 162, 235, 1);
+      background: white;
+    }
+  </style>
+
+</head>
+
+<body onload="updateChartStepCount()">
+
+<nav class="navbar navbar-light bg-dark">
+  <button type="button" class="btn btn-primary btn-lg" onclick="updateChartStepCount()">Step Count</button>
+    <button type="button" class="btn btn-primary btn-lg" onclick="updateChartActiveMinutes()">Active Minutes</button>
+    <button type="button" class="btn btn-primary btn-lg" onclick="updateChartCaloriesExpended()">Calories Expended</button>
+    <button type="button" class="btn btn-primary btn-lg" onclick="updateChartHeartMinutes()">Heart Minutes</button>
+    <button type="button" class="btn btn-primary btn-lg" onclick="updateChartSleepSegment()">Sleep Segment</button>
+    <button type="button" class="btn btn-primary btn-lg" onclick="updateChartWeight()">Weight</button>
+    <button type="button" class="btn btn-primary btn-lg" onclick="updateChartActivitySummary()">Activity Summary</button>
+</nav>
+
+  <div class="chartCard">
+    <div class="chartBox">
+      <canvas id="myChart"></canvas>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+
+  <script>
+
+    // Fetch Block
+    function updateChartStepCount() {
+      async function fetchDataStepCount() {
+        const url = 'https://v1.nocodeapi.com/sidhant2k1/fit/yllfqnGDVVjmQUOH/aggregatesDatasets?dataTypeName=steps_count,active_minutes,calories_expended,heart_minutes,sleep_segment,weight,activity_summary&timePeriod=30days&durationTime=daily';
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        var options = {
+          method: "get",
+          headers: myHeaders,
+          redirect: "follow",
+        };
+        const response = await fetch(url, options);
+        const datapoints = await response.json();
+        console.log(datapoints)
+        return datapoints;
+      }
+      fetchDataStepCount().then(datapoints => {
+        const day=datapoints.steps_count.map(ele=>{
+          return ele.startTime;
+        })
+        const stepCount=datapoints.steps_count.map(ele=>{
+          return ele.value;
+        })
+        console.log(day);
+        console.log(stepCount);
+        myChart.config.data.labels =day;
+        myChart.config.data.datasets[0].data =stepCount;
+        myChart.config.data.datasets[0].label ="Steps Count";
+        myChart.update();
+      })
+    }
+    
+    function updateChartActiveMinutes() {
+      async function fetchDataActiveMinutes() {
+        const url = 'https://v1.nocodeapi.com/sidhant2k1/fit/yllfqnGDVVjmQUOH/aggregatesDatasets?dataTypeName=steps_count,active_minutes,calories_expended,heart_minutes,sleep_segment,weight,activity_summary&timePeriod=30days&durationTime=daily';
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        var options = {
+          method: "get",
+          headers: myHeaders,
+          redirect: "follow",
+        };
+        const response = await fetch(url, options);
+        const datapoints = await response.json();
+        console.log(datapoints)
+        return datapoints;
+      }
+      fetchDataActiveMinutes().then(datapoints => {
+        const day=datapoints.active_minutes.map(ele=>{
+          return ele.startTime;
+        })
+        const activeMinutes=datapoints.active_minutes.map(ele=>{
+          return ele.value;
+        })
+        
+        console.log(day);
+        console.log(activeMinutes);
+
+        myChart.config.data.labels =day;
+        myChart.config.data.datasets[0].data =activeMinutes;
+        myChart.config.data.datasets[0].label ="Active Minutes";
+
+        myChart.update();
+      })
+    }
+
+    function updateChartCaloriesExpended() {
+      async function fetchDataCaloriesExpended() {
+        const url = 'https://v1.nocodeapi.com/sidhant2k1/fit/yllfqnGDVVjmQUOH/aggregatesDatasets?dataTypeName=steps_count,active_minutes,calories_expended,heart_minutes,sleep_segment,weight,activity_summary&timePeriod=30days&durationTime=daily';
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        var options = {
+          method: "get",
+          headers: myHeaders,
+          redirect: "follow",
+        };
+        const response = await fetch(url, options);
+        const datapoints = await response.json();
+        console.log(datapoints)
+        return datapoints;
+      }
+      fetchDataCaloriesExpended().then(datapoints => {
+        const day=datapoints.calories_expended.map(ele=>{
+          return ele.startTime;
+        })
+        const caloriesExpended=datapoints.calories_expended.map(ele=>{
+          return ele.value;
+        })
+        
+        console.log(day);
+        console.log(caloriesExpended);
+
+        myChart.config.data.labels =day;
+        myChart.config.data.datasets[0].data =caloriesExpended;
+        myChart.config.data.datasets[0].label ="Calories Expended";
+
+        myChart.update();
+      })
+    }
+
+    function updateChartHeartMinutes() {
+      async function fetchDataHeartMinutes() {
+        const url = 'https://v1.nocodeapi.com/sidhant2k1/fit/yllfqnGDVVjmQUOH/aggregatesDatasets?dataTypeName=steps_count,active_minutes,calories_expended,heart_minutes,sleep_segment,weight,activity_summary&timePeriod=30days&durationTime=daily';
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        var options = {
+          method: "get",
+          headers: myHeaders,
+          redirect: "follow",
+        };
+        const response = await fetch(url, options);
+        const datapoints = await response.json();
+        console.log(datapoints)
+        return datapoints;
+      }
+      fetchDataHeartMinutes().then(datapoints => {
+        const day=datapoints.heart_minutes.map(ele=>{
+          return ele.startTime;
+        })
+        const heartMinutes=datapoints.heart_minutes.map(ele=>{
+          return ele.value;
+        })
+        
+        console.log(day);
+        console.log(heartMinutes);
+
+        myChart.config.data.labels =day;
+        myChart.config.data.datasets[0].data =heartMinutes;
+        myChart.config.data.datasets[0].label ="Heart Minutes";
+
+        myChart.update();
+      })
+    }
+
+    function updateChartSleepSegment() {
+      async function fetchDataSleepSegment() {
+        const url = 'https://v1.nocodeapi.com/sidhant2k1/fit/yllfqnGDVVjmQUOH/aggregatesDatasets?dataTypeName=steps_count,active_minutes,calories_expended,heart_minutes,sleep_segment,weight,activity_summary&timePeriod=30days&durationTime=daily';
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        var options = {
+          method: "get",
+          headers: myHeaders,
+          redirect: "follow",
+        };
+        const response = await fetch(url, options);
+        const datapoints = await response.json();
+        console.log(datapoints)
+        return datapoints;
+      }
+      fetchDataSleepSegment().then(datapoints => {
+        const day=datapoints.sleep_segment.map(ele=>{
+          return ele.startTime;
+        })
+        const sleepSegment=datapoints.sleep_segment.map(ele=>{
+          return ele.value;
+        })
+        
+        console.log(day);
+        console.log(sleepSegment);
+
+        myChart.config.data.labels =day;
+        myChart.config.data.datasets[0].data =sleepSegment;
+        myChart.config.data.datasets[0].label ="Sleep Segment";
+
+        myChart.update();
+      })
+    }
+
+    function updateChartWeight() {
+      async function fetchDataWeight() {
+        const url = 'https://v1.nocodeapi.com/sidhant2k1/fit/yllfqnGDVVjmQUOH/aggregatesDatasets?dataTypeName=steps_count,active_minutes,calories_expended,heart_minutes,sleep_segment,weight,activity_summary&timePeriod=30days&durationTime=daily';
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        var options = {
+          method: "get",
+          headers: myHeaders,
+          redirect: "follow",
+        };
+        const response = await fetch(url, options);
+        const datapoints = await response.json();
+        console.log(datapoints)
+        return datapoints;
+      }
+      fetchDataWeight().then(datapoints => {
+        const day=datapoints.weight.map(ele=>{
+          return ele.startTime;
+        })
+        const weight=datapoints.weight.map(ele=>{
+          return ele.value;
+        })
+        
+        console.log(day);
+        console.log(weight);
+
+        myChart.config.data.labels =day;
+        myChart.config.data.datasets[0].data =weight;
+        myChart.config.data.datasets[0].label ="Weight";
+
+        myChart.update();
+      })
+    }
+
+    function updateChartActivitySummary() {
+      async function fetchDataActivitySummary() {
+        const url = 'https://v1.nocodeapi.com/sidhant2k1/fit/yllfqnGDVVjmQUOH/aggregatesDatasets?dataTypeName=steps_count,active_minutes,calories_expended,heart_minutes,sleep_segment,weight,activity_summary&timePeriod=30days&durationTime=daily';
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        var options = {
+          method: "get",
+          headers: myHeaders,
+          redirect: "follow",
+        };
+        const response = await fetch(url, options);
+        const datapoints = await response.json();
+        console.log(datapoints)
+        return datapoints;
+      }
+      fetchDataActivitySummary().then(datapoints => {
+        const day=datapoints.activity_summary.map(ele=>{
+          return ele.startTime;
+        })
+        const activitySummary=datapoints.activity_summary.map(ele=>{
+          return ele.value;
+        })
+        
+        console.log(day);
+        console.log(activitySummary);
+
+        myChart.config.data.labels =day;
+        myChart.config.data.datasets[0].data =activitySummary;
+        myChart.config.data.datasets[0].label ="Activity Summary";
+
+        myChart.update();
+      })
+    }
+
+    // setup 
+    const data = {
+      labels: [],
+      datasets: [{
+        label: '',
+        data: [],
+        backgroundColor: [
+          'rgba(255, 26, 104, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+          'rgba(0, 0, 0, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255, 26, 104, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)',
+          'rgba(0, 0, 0, 1)'
+        ],
+        borderWidth: 1
+      }]
+    };
+
+    // config 
+    const config = {
+      type: 'bar',
+      data,
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    };
+
+    // render init block
+    const myChart = new Chart(
+      document.getElementById('myChart'),
+      config
+    );
+
+    // Instantly assign Chart.js version
+    // const chartVersion = document.getElementById('chartVersion');
+    // chartVersion.innerText = Chart.version;
+  </script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+* {
+    margin: 0px;
+    padding: 0px;
+    text-align: justify;
+}
+nav {
+    margin-top: 5px;
+}
+.nav-item {
+    margin: 0px 25px;
+    font-size: 25px;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.choose {
+    display: flex;
+    flex-direction: row;
+}
+.doc {
+    border: 1px solid black;
+}
+.pat {
+    border: 1px solid black;
+}
