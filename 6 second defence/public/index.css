@@ -75,11 +75,11 @@ iframe {
     height: 100%;
 }
 .usingEHR {
-    margin: 0px 100px;
+    margin: 200px 100px;
     height: 10%;
 }
 .features {
-    margin: 0px 100px;
+    margin: 20px 100px;
 }
 footer {
     margin-top: 100px;
@@ -104,7 +104,8 @@ footer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    padding: 20px;
+    padding: 10px;
+    margin-right: 20px;
 }
 .card {
     display: inline-block;
